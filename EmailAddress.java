@@ -5,9 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
-
 /**
  *
  * @author Renton Mcintyre (u14312710)
@@ -16,8 +13,6 @@ import javax.ejb.LocalBean;
 /**
  * A class that defines an EmailAddress (which is valid). 
  */
-@Stateless
-@LocalBean
 public class EmailAddress {
     /**
     *  Defines the no-args constructor for an EmailAddress

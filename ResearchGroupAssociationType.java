@@ -5,15 +5,11 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *
  * @author Renton Mcintyre (u14312710)
  */
-@Stateless
-@LocalBean
 public enum ResearchGroupAssociationType {
     STUDENT, COLLABORATOR, MEMBER, GROUPLEADER
 }

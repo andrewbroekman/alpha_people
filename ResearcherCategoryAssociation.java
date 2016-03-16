@@ -6,8 +6,6 @@
 package com.codinginfinity.people;
 
 import java.util.Date;
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *
@@ -18,8 +16,6 @@ import javax.ejb.LocalBean;
  * This defines an association between a Reseacher (a type of person) and a
  * ResearcherCategory
  */
-@Stateless
-@LocalBean
 public class ResearcherCategoryAssociation {
     /**
     *  Defines the no-args constructor for a ResearchCategoryAssociation

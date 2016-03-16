@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +16,6 @@ import java.util.ArrayList;
  * 
  * Research Group type, defined as an Entity
  */
-@Stateless
-@LocalBean
 public class Group implements Entity {
     /**
     *  Defines the no-args constructor for a Research Group
@@ -35,7 +31,7 @@ public class Group implements Entity {
     */
     public Group(String name)
     {
-        members = new ArrayList<>();
+        members = new ArrayList<Entity>();
         this.name = name;
     }
     
@@ -47,7 +43,7 @@ public class Group implements Entity {
     */
     public Group(String name, ArrayList<Entity> members)
     {
-        members = new ArrayList<>();
+        members = new ArrayList<Entity>();
         this.name = name;
         this.members = members;
     }

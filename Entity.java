@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *
@@ -16,8 +14,6 @@ import javax.ejb.LocalBean;
 /**
  * Defines an entity (any being with substance, such as a Person or Group)
  */
-@Stateless
-@LocalBean
 public interface Entity {
 
 }

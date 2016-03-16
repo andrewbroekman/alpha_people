@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.ArrayList;
 
 /**
@@ -17,8 +15,6 @@ import java.util.ArrayList;
 /**
  * Defines the ResearcherCategory object
  */
-@Stateless
-@LocalBean
 public class ResearcherCategory {
     /**
     *  Defines the no-args constructor for a RsearcherCategory
@@ -35,7 +31,7 @@ public class ResearcherCategory {
     */
     public ResearcherCategory(ResearchCategoryState start) 
     {
-        states = new ArrayList<>();
+        states = new ArrayList<ResearchCategoryState>();
         this.states.add(start);
     }
     

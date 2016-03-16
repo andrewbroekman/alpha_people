@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.Date;
 
 /**
@@ -18,8 +16,6 @@ import java.util.Date;
  * This class represents an association between a Person has with a Group object
  * and defines its type
  */
-@Stateless
-@LocalBean
 public class ResearchGroupAssociation {
     /**
     *  Defines the no-args constructor for a Person

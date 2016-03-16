@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.Date;
 
 /**
@@ -17,8 +15,6 @@ import java.util.Date;
 /**
  * A saved state of a ResearcherCategory
  */
-@Stateless
-@LocalBean
 public class ResearchCategoryState {
     /**
     *  Defines the no-args constructor for a ResearchCategoryState

@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.ArrayList;
 import java.util.Date;
 /**
@@ -18,8 +16,6 @@ import java.util.Date;
  * This class creates examples of the various objects in the People system
  * Association objects can be made using the generated Objects
  */
-@Stateless
-@LocalBean
 public class MockCreator {
     /**
      * Generates a valid mock EmailAddress and should throw an exception if an invalid
@@ -48,14 +44,14 @@ public class MockCreator {
                 return new Person("Testing A", "Person", createEmail(true));
             case 2:
             {
-                ArrayList<Role> roles = new ArrayList<>();
+                ArrayList<Role> roles = new ArrayList<Role>();
                 roles.add(Role.RESEARCHER);
                 roles.add(Role.USER);
                 return new Person("Testing B", "PersonB", createEmail(true), roles);
             }
             default:
             {
-                ArrayList<Role> roles = new ArrayList<>();
+                ArrayList<Role> roles = new ArrayList<Role>();
                 roles.add(Role.RESEARCHER);
                 roles.add(Role.USER);
                 roles.add(Role.ADMIN);
@@ -74,7 +70,7 @@ public class MockCreator {
      */
     public Group createGroup(int type) throws InvalidEmailException
     {
-        ArrayList<Entity> members = new ArrayList<>();
+        ArrayList<Entity> members = new ArrayList<Entity>();
         switch (type) {
             case 1:
                 return new Group("Research Group A");

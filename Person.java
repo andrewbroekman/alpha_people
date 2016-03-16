@@ -5,8 +5,6 @@
  */
 package com.codinginfinity.people;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,8 +17,6 @@ import java.util.Date;
 /**
  * Person type, an entity defined as being a record of a human being
  */
-@Stateless
-@LocalBean
 public class Person implements Entity {
     /**
     *  Defines the no-args constructor for a Person
@@ -40,9 +36,9 @@ public class Person implements Entity {
     public Person(String firstName, String surname, EmailAddress primaryEmail)
     {
         
-        roles = new ArrayList<>();
-        categories = new ArrayList<>();
-        groups = new ArrayList<>();
+        roles = new ArrayList<Role>();
+        categories = new ArrayList<ResearcherCategoryAssociation>();
+        groups = new ArrayList<ResearchGroupAssociation>();
         
         this.firstName = firstName;
         this.surname = surname;
@@ -60,9 +56,9 @@ public class Person implements Entity {
     */
     public Person(String firstName, String surname, EmailAddress primaryEmail, ArrayList<Role> roles)
     {
-        roles = new ArrayList<>();
-        categories = new ArrayList<>();
-        groups = new ArrayList<>();
+        roles = new ArrayList<Role>();
+        categories = new ArrayList<ResearcherCategoryAssociation>();
+        groups = new ArrayList<ResearchGroupAssociation>();
         
         this.firstName = firstName;
         this.surname = surname;
