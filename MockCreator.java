@@ -44,18 +44,11 @@ public class MockCreator {
                 return new Person("Testing A", "Person", createEmail(true));
             case 2:
             {
-                ArrayList<Role> roles = new ArrayList<Role>();
-                roles.add(Role.RESEARCHER);
-                roles.add(Role.USER);
-                return new Person("Testing B", "PersonB", createEmail(true), roles);
+                return new Person("Testing B", "PersonB", createEmail(true), new BasicUser());
             }
             default:
             {
-                ArrayList<Role> roles = new ArrayList<Role>();
-                roles.add(Role.RESEARCHER);
-                roles.add(Role.USER);
-                roles.add(Role.ADMIN);
-                return new Person("Testing C", "PersonC", createEmail(true), roles);
+                return new Person("Testing C", "PersonC", createEmail(true), new AdminUser());
             }
         }
         

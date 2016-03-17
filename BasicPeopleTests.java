@@ -5,6 +5,7 @@
  */
 package com.codinginfinity.people;
 
+import com.codinginfinity.people.ResearchGroupAssociationType;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * People system
  * @author Renton Mcintyre (u14312710)
  */
-public class BasicTests {
+public class BasicPeopleTests {
     /**
      * MockCreator object to perform tests using
      */

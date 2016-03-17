@@ -27,8 +27,7 @@ public class Person implements Entity {
     
     /**
     * Defines the interface of the standard constructor for
-    * a basic Person. Adds the Role "RESEARCHER" to Person,
-    * as this is always the default
+    * a basic Person.
     * @param    firstName   The name(s) of the Person
     * @param    surname     The surname of the Person
     * @param    primaryEmail The primary email address of the Person    
@@ -36,34 +35,33 @@ public class Person implements Entity {
     public Person(String firstName, String surname, EmailAddress primaryEmail)
     {
         
-        roles = new ArrayList<Role>();
         categories = new ArrayList<ResearcherCategoryAssociation>();
         groups = new ArrayList<ResearchGroupAssociation>();
         
         this.firstName = firstName;
         this.surname = surname;
         this.primaryEmail = primaryEmail;
-        this.roles.add(Role.RESEARCHER);
+        this.user = null;
     }
     
     /**
     * Defines the interface of a constructor for a Person
-    * whose roles are already defined
+    * who has a user object already defined
     * @param    firstName   The name(s) of the Person
     * @param    surname     The surname of the Person
     * @param    primaryEmail The primary email address of the Person
-    * @param    roles       The predefined roles of the Person
+    * @param    user        The user object associated with the person
     */
-    public Person(String firstName, String surname, EmailAddress primaryEmail, ArrayList<Role> roles)
+    public Person(String firstName, String surname, EmailAddress primaryEmail, User user)
     {
-        roles = new ArrayList<Role>();
         categories = new ArrayList<ResearcherCategoryAssociation>();
         groups = new ArrayList<ResearchGroupAssociation>();
         
         this.firstName = firstName;
         this.surname = surname;
         this.primaryEmail = primaryEmail;
-        this.roles = roles;
+        this.user = user;
+        
     }
     
     public void addGroup(Group group, ResearchGroupAssociationType type)
@@ -120,11 +118,11 @@ public class Person implements Entity {
 
     
     /**
-    * Defines a function that returns the list of roles
+    * Defines a function that returns the user object
     * associated with this Person
-    * @return The list of roles this person has
+    * @return The user object associated with this person
     */ 
-    public ArrayList<Role> getRoles() { return this.roles; }
+    public User getUser() { return this.user; }
     
     
     /*
@@ -151,12 +149,10 @@ public class Person implements Entity {
     private ArrayList<EmailAddress> auxiliaryEmails;
     
     /**
-     * A list of this person's roles in the system 
-     * Currently can be: RESEARCHER, ADMIN and USER
-     * More can be added later. A Person may have multiple roles.
-     * Eg: Any USER is also a RESEARCHER
+     * An object that contains this person's User
+     * If it is NULL, this person is just a normal researcher
      */
-    private ArrayList<Role> roles;
+    private User user;
     
     /**
      * A list of this person's research groups
