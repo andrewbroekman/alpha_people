@@ -26,6 +26,18 @@
             </roles>
             <timezone>Africa/Johannesburg</timezone>
         </developer>
+        
+        <developer>
+            <id>14103207</id>
+            <name>Lethabo Mogase</name>
+            <email>u14103207@tuks.co.za</email>
+            <roles>
+                <role>Alpha People</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>Africa/Johannesburg</timezone>
+        </developer>
+        
     </developers>
 
     <distributionManagement>
