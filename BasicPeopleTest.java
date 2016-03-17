@@ -5,15 +5,19 @@
  */
 package com.codinginfinity.people;
 
-import com.codinginfinity.people.ResearchGroupAssociationType;
 import java.util.Date;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- * A file filled with basic test functions to ensure basic functionality of the 
- * People system
+ * Basic testing file, used mostly to test constructor functions and associations
  * @author Renton Mcintyre (u14312710)
  */
-public class BasicPeopleTests {
+public class BasicPeopleTest {
     /**
      * MockCreator object to perform tests using
      */
@@ -27,11 +31,16 @@ public class BasicPeopleTests {
     static com.codinginfinity.people.ResearcherCategory exampleCategory;
             
     
-    public static void main(String args[]) {
-        System.out.println("*****************************\n\n"
-                         + "*******COMMENCING TESTS******\n\n"
-                         + "*****************************\n\n");
-         mocker = new com.codinginfinity.people.MockCreator();
+    
+    public BasicPeopleTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+        System.out.println("\n**************************\n"
+                            +"*****COMMENCING TESTS*****\n"
+                            +"**************************\n\n");
+          mocker = new com.codinginfinity.people.MockCreator();
         try
         {
             examplePersonA = mocker.createPerson(1);
@@ -43,20 +52,28 @@ public class BasicPeopleTests {
         {
             System.out.println("Unexpected exception: "+e+"\n");
         }
-        createEmails();
-        createPeople();
-        createGroups();
-        createCategories();
-        associatePersonWithGroup();
-        associatePersonWithCategory();
     }
     
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
-    /**
-     * Tests creation of email addresses, should succeed on one attempt
-     * should throw on another
-     */
-    private static void createEmails()
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
+    
+    @Test
+    public void createEmails()
     {     
         com.codinginfinity.people.EmailAddress emailA;
         try
@@ -81,7 +98,8 @@ public class BasicPeopleTests {
     /**
      * Tests creation of Persons, should succeed on all attempts
      */
-    private static void createPeople()
+    @Test
+    public void createPeople()
     {
         com.codinginfinity.people.Person personA, personB, personC;
         try
@@ -115,8 +133,9 @@ public class BasicPeopleTests {
     
     /**
      * Tests creation of groups, should succeed on all attempts
-     */   
-    private static void createGroups()
+     */
+    @Test
+    public void createGroups()
     {
         com.codinginfinity.people.Group groupA, groupB, groupC, groupD;
         try
@@ -161,7 +180,8 @@ public class BasicPeopleTests {
      * Tests creation of Research Categories, should succeed on one attempt
      * should throw on another
      */
-    private static void createCategories()
+    @Test
+    public void createCategories()
     {
         com.codinginfinity.people.ResearcherCategory categoryA;
         try
@@ -187,7 +207,8 @@ public class BasicPeopleTests {
      * Tests associations with groups. Always uses type STUDENT, as type should cause no issues
      * Expects multiple failures and few successes
      */
-    private static void associatePersonWithGroup() {
+    @Test
+    public void associatePersonWithGroup() {
         Date currentDate = new Date();
         Date futureDate = new Date();
         futureDate.setDate(futureDate.getDate()+5000);
@@ -261,7 +282,8 @@ public class BasicPeopleTests {
      * Tests associations with groups. Always uses type STUDENT, as type should cause no issues
      * Expects multiple failures and few successes
      */
-    private static void associatePersonWithCategory() {
+    @Test
+    public void associatePersonWithCategory() {
         Date currentDate = new Date();
         Date futureDate = new Date();
         futureDate.setDate(futureDate.getDate()+5000);
