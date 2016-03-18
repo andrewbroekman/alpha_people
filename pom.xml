@@ -26,7 +26,7 @@
             </roles>
             <timezone>Africa/Johannesburg</timezone>
         </developer>
-        
+
         <developer>
             <id>14103207</id>
             <name>Lethabo Mogase</name>
@@ -37,7 +37,7 @@
             </roles>
             <timezone>Africa/Johannesburg</timezone>
         </developer>
-		
+
 	<developer>
             <id>10126202</id>
             <name>Sara Masilela</name>
@@ -48,7 +48,18 @@
             </roles>
             <timezone>Africa/Johannesburg</timezone>
         </developer>
-        
+
+        <developer>
+            <id>12004589</id>
+            <name>Mothusi Masibi</name>
+            <email>u12004589@tuks.co.za</email>
+            <roles>
+                <role>Alpha People</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>Africa/Johannesburg</timezone>
+        </developer>
+
     </developers>
 
     <distributionManagement>
