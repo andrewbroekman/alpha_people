@@ -9,6 +9,7 @@
     </parent>
 
     <!-- Basic project settings -->
+    <artifactId>people</artifactId>
     <packaging>jar</packaging>
     <!-- Metadata regarding the project -->
     <name>UP CS Research Management System - People Module</name>
