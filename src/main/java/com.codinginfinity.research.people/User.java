@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codinginfinity.people;
+package com.codinginfinity.research.people;
 
 /**
  * An object that has the ability to add and remove things in database
