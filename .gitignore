@@ -418,6 +418,7 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+*.properties
 
 # CDT-specific
 .cproject
