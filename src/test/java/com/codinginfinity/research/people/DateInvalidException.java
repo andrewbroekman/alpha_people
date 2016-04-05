@@ -11,7 +11,8 @@ package com.codinginfinity.research.people;
  * in a given range, yet is not
  * @author Renton Mcintyre (u14312710)
  */
-public class DateInvalidException extends Exception {
+public class DateInvalidException extends Exception
+{
     public DateInvalidException() {}
     public DateInvalidException(String message)
     {
