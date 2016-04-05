@@ -7,14 +7,14 @@ package com.codinginfinity.research.people;
 
 
 /**
- * Defines an InvalidEmailException used to identify a case when an invalid
- * email has been given
+ * Defines an Exception handler that is thrown when a given date should be
+ * in a given range, yet is not
  * @author Renton Mcintyre (u14312710)
  */
-
-public class InvalidEmailException extends Exception {
-    public InvalidEmailException() {}
-    public InvalidEmailException(String message)
+public class DateInvalidException extends Exception
+{
+    public DateInvalidException() {}
+    public DateInvalidException(String message)
     {
         super(message);
     }
