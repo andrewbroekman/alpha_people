@@ -1,7 +1,11 @@
 
 import com.codinginfinity.research.people.Entity;
-import com.codinginfinity.research.people.Group;
+import com.codinginfinity.research.people.InvalidEmailException;
 import com.codinginfinity.research.people.Person;
+import com.codinginfinity.research.people.defaultImpl.GroupImplementation;
+import com.codinginfinity.research.people.defaultImpl.PersonImplementation;
+import com.codinginfinity.research.people.defaultImpl.ResearcherCategoryImplementation;
+
 import java.util.ArrayList;
 
 /*
@@ -13,20 +17,26 @@ import java.util.ArrayList;
  *
  * @author Muller
  */
-public class NewClass 
+
+
+public class NewClass
 {
-    static com.codinginfinity.research.people.Person examplePersonA, examplePersonB, examplePersonC;
-    static com.codinginfinity.research.people.Group exampleGroup;
-    static com.codinginfinity.research.people.ResearcherCategory exampleCategory;
+    static PersonImplementation examplePersonA, examplePersonB, examplePersonC;
+    static GroupImplementation exampleGroup;
+    static ResearcherCategoryImplementation exampleCategory;
     
     public static void main(String args[]) 
     {
-        examplePersonA = new Person("A", "A", null);
-        examplePersonB = new Person("B", "B", null);
-        examplePersonC = new Person("C", "C", null);
-        
-        Person examplePerson = new Person(null, null, null);
-        
+        PersonImplementation examplePerson;
+        try {
+            examplePersonA = new PersonImplementation("A", "A", "test@test.com");
+            examplePersonB = new PersonImplementation("B", "B", "test@test.com");
+            examplePersonC = new PersonImplementation("C", "C", "test@test.com");
+
+        }catch(InvalidEmailException e)
+        {
+            System.out.println(e.getMessage());
+        }
         
         System.out.println(examplePersonA.getFirstName());
         System.out.println(examplePersonB.getFirstName());
@@ -38,12 +48,12 @@ public class NewClass
         peopleList.add(examplePersonC);
         
         
-        examplePerson = (Person) peopleList.get(2);
+        examplePerson = (PersonImplementation) peopleList.get(2);
         System.out.println(examplePerson.getFirstName());
         
         System.out.println(peopleList.size());
         
-        exampleGroup = new Group("Group", peopleList);
+        exampleGroup = new GroupImplementation("GroupImplementation", peopleList);
         
         System.out.println(exampleGroup.getMembers());
     }

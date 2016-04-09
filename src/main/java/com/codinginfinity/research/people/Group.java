@@ -5,94 +5,22 @@
  */
 package com.codinginfinity.research.people;
 
-import java.util.ArrayList;
+import java.math.BigInteger;
+import java.util.List;
 
 /**
  *
- * @author Renton Mcintyre (u14312710)
+ * @author Muller
  */
-
-/**
- * 
- * Research Group type, defined as an Entity
- */
-public class Group implements Entity {
-    /**
-    *  Defines the no-args constructor for a Research Group
-    *  Protected, as it should not be used
-    *  (especially not outside of the people package)
-    */
-    protected Group() {}
+public interface Group extends Entity
+{
+    BigInteger getId();
     
-    /**
-    * Defines the interface of the standard constructor for
-    * an empty Research Group
-    * @param    name    The name of the research group
-    */
-    public Group(String name)
-    {
-        members = new ArrayList<Entity>();
-        this.name = name;
-    }
+    String getName();
     
-    /**
-    * Defines the interface for a constructor to make a group already 
-    * containing a list of members
-    * @param    name    The name of the research group
-    * @param    members A list of the members already belonging to this group
-    */
-    public Group(String name, ArrayList<Entity> members)
-    {
-        //members = new ArrayList<Entity>(); WHY??
-        this.name = name;
-        this.members = members;
-    }
+    public List<Entity> getMembers();
     
-    /**
-    * Defines a function that returns the name of this Research Group
-    * @return The name of the Research Group
-    */
-    public String getName() { return this.name; }
+    void addMember(Entity newMember);
     
-    /**
-    * Defines a function that returns the list of members 
-    * associated with this group
-    * @return The list of members in the Research Group
-    */
-    public ArrayList<Entity> getMembers() 
-    { 
-        System.out.println(members.size());
-        return this.members; 
-    }
-    
-    /**
-     * 
-    */
-    public void addMember(Entity newMember) 
-    { 
-        this.members.add(newMember); 
-        //kry dan member in db en add association
-        //addGroup?
-    }
-
-    public void removeMember(Entity member) 
-    { 
-        this.members.remove(member); 
-        //kry dan member in db en add association
-    }
-
-    /*
-     * Member variables:
-     */
-    
-    /**
-     * The name of the Research Group
-     */
-    private String name;
-  
-    /**
-    * The list of members that belong to this group, of type Entity
-    */
-    private ArrayList<Entity> members;
-    
+    void removeMember(Entity member);
 }

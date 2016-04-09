@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codinginfinity.research.people;
+package com.codinginfinity.research.people.defaultImpl;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,25 +18,25 @@ import java.util.List;
 
 /**
  * 
- * Research Group type, defined as an Entity
+ * Research GroupImplementation type, defined as an Entity
  */
 @javax.persistence.Entity
-public class Group implements Entity {
+public class GroupImplementation implements com.codinginfinity.research.people.Group {
     /**
-    *  Defines the no-args constructor for a Research Group
+    *  Defines the no-args constructor for a Research GroupImplementation
     *  Protected, as it should not be used
     *  (especially not outside of the people package)
     */
-    protected Group() {}
+    protected GroupImplementation() {}
     
     /**
     * Defines the interface of the standard constructor for
-    * an empty Research Group
+    * an empty Research GroupImplementation
     * @param    name    The name of the research group
     */
-    public Group(String name)
+    public GroupImplementation(String name)
     {
-        this.members = new ArrayList<Person>();
+        this.members = new ArrayList<com.codinginfinity.research.people.Entity>();
         this.name = name;
     }
     
@@ -45,7 +46,7 @@ public class Group implements Entity {
     * @param    name    The name of the research group
     * @param    members A list of the members already belonging to this group
     */
-    public Group(String name, List<Person> members)
+    public GroupImplementation(String name, List<com.codinginfinity.research.people.Entity> members)
     {
         this.name = name;
         this.members = members;
@@ -57,17 +58,17 @@ public class Group implements Entity {
     }
 
     /**
-    * Defines a function that returns the name of this Research Group
-    * @return The name of the Research Group
+    * Defines a function that returns the name of this Research GroupImplementation
+    * @return The name of the Research GroupImplementation
     */
     public String getName() { return this.name; }
     
     /**
     * Defines a function that returns the list of members 
     * associated with this group
-    * @return The list of members in the Research Group
+    * @return The list of members in the Research GroupImplementation
     */
-    public List<Person> getMembers()
+    public List<com.codinginfinity.research.people.Entity> getMembers()
     { 
         System.out.println(members.size());
         return this.members;
@@ -76,14 +77,14 @@ public class Group implements Entity {
     /**
      * 
     */
-    public void addMember(Person newMember)
+    public void addMember(com.codinginfinity.research.people.Entity newMember)
     { 
         this.members.add(newMember);
         //kry dan member in db en add association
         //addGroup?
     }
 
-    public void removeMember(Person member)
+    public void removeMember(com.codinginfinity.research.people.Entity member)
     { 
         this.members.remove(member);
         //kry dan member in db en add association
@@ -96,7 +97,7 @@ public class Group implements Entity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private BigInteger id;
     /**
-     * The name of the Research Group
+     * The name of the Research GroupImplementation
      */
     @Basic
     private String name;
@@ -105,6 +106,6 @@ public class Group implements Entity {
     * The list of members that belong to this group, of type Entity
     */
     @OneToMany
-    private List<Person> members;
+    private List<com.codinginfinity.research.people.Entity> members;
     
 }

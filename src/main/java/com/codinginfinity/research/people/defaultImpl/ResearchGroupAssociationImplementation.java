@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codinginfinity.research.people;
+package com.codinginfinity.research.people.defaultImpl;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -15,27 +15,27 @@ import java.util.Date;
  */
 
 /**
- * This class represents an association between a Person has with a Group object
+ * This class represents an association between a PersonImplementation has with a GroupImplementation object
  * and defines its type
  */
 @javax.persistence.Entity
-public class ResearchGroupAssociation {
+public class ResearchGroupAssociationImplementation implements com.codinginfinity.research.people.ResearchGroupAssociation {
     /**
-    *  Defines the no-args constructor for a Person
+    *  Defines the no-args constructor for a PersonImplementation
     *  Protected, as it should not be used
     *  (especially not outside of the people package)
     */
-    protected ResearchGroupAssociation(){}
+    protected ResearchGroupAssociationImplementation(){}
     
     
     /**
     * Defines the interface of the standard constructor for
-    * a basic ResearchGroupAssociation. Assumes that starting date is NOW.
+    * a basic ResearchGroupAssociationImplementation. Assumes that starting date is NOW.
     * Also assumes association has not ended
-    * @param    group   The Group in the association
+    * @param    group   The GroupImplementation in the association
     * @param    type    The type of association this is    
     */
-    public ResearchGroupAssociation(Group group, ResearchGroupAssociationType type)
+    public ResearchGroupAssociationImplementation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type)
     {
         this.group = group;
         this.type = type;
@@ -43,46 +43,46 @@ public class ResearchGroupAssociation {
     }
     
     /**
-    * Defines the interface for a constructor for a ResearchGroupAssociation wherein
+    * Defines the interface for a constructor for a ResearchGroupAssociationImplementation wherein
     * a start date has been specified. Assumes association has not ended.
-    * @param    group   The Group in the association
+    * @param    group   The GroupImplementation in the association
     * @param    type    The type of association this is
     * @param    startDate   The date upon which the association started
-    * @throws   DateInvalidException    Throws an exception if the date provided for
+    * @throws   com.codinginfinity.research.people.DateInvalidException    Throws an exception if the date provided for
     *  a start date is in the future
     */
-    public ResearchGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate)
-            throws DateInvalidException
+    public ResearchGroupAssociationImplementation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate)
+            throws com.codinginfinity.research.people.DateInvalidException
     {
         this.group = group;
         if(startDate.after(new Date())) 
-            throw new DateInvalidException("Date "+startDate+" is in the future,"
+            throw new com.codinginfinity.research.people.DateInvalidException("Date "+startDate+" is in the future,"
                     + " but a research group association must start in the past");
         this.startDate = startDate;
     }
     
     /**
-    * Defines the interface for a constructor for a ResearchGroupAssociation wherein
+    * Defines the interface for a constructor for a ResearchGroupAssociationImplementation wherein
     * a start date has been specified as well as an end date (thus we know this association is over)
-    * @param    group   The Group in the association
+    * @param    group   The GroupImplementation in the association
     * @param    type    The type of association this is
     * @param    startDate   The date upon which the association started
     * @param    endDate The date upon which this association ended
-    * @throws   DateInvalidException    Throws an exception if the date provided for
+    * @throws   com.codinginfinity.research.people.DateInvalidException    Throws an exception if the date provided for
     *  a start date is in the future or if provided end date is in the past
     */
-    public ResearchGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate)
-            throws DateInvalidException 
+    public ResearchGroupAssociationImplementation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate, Date endDate)
+            throws com.codinginfinity.research.people.DateInvalidException
     {
         this.group = group;
         if(startDate.after(new Date()))
-            throw new DateInvalidException("Date "+startDate+" is in the future,"
+            throw new com.codinginfinity.research.people.DateInvalidException("Date "+startDate+" is in the future,"
                     + " but a research group association must start in the past");
         this.startDate = startDate;
         
         
         if(endDate.after(new Date()))
-            throw new DateInvalidException("Date "+endDate+" is in the future,"
+            throw new com.codinginfinity.research.people.DateInvalidException("Date "+endDate+" is in the future,"
             +" but a research group association cannot have an end date if that"
             +" date has yet to come to pass");
         this.endDate = endDate;
@@ -94,10 +94,10 @@ public class ResearchGroupAssociation {
     }
 
     /**
-     * Returns the Group in the association
-     * @return  The Group in the association
+     * Returns the GroupImplementation in the association
+     * @return  The GroupImplementation in the association
      */
-    public Group getGroup() { return this.group; }
+    public com.codinginfinity.research.people.Group getGroup() { return this.group; }
 
 
     /**
@@ -116,7 +116,7 @@ public class ResearchGroupAssociation {
      * Returns the type of this association
      * @return The type of association this is
      */
-    public ResearchGroupAssociationType getType() { return this.type; }
+    public com.codinginfinity.research.people.ResearchGroupAssociationType getType() { return this.type; }
     
     /*
     * Member variables
@@ -126,10 +126,10 @@ public class ResearchGroupAssociation {
     private BigInteger id;
     
     /**
-     * The Group in the association
+     * The GroupImplementation in the association
      */
     @OneToOne
-    private Group group;
+    private com.codinginfinity.research.people.Group group;
     
     /**
      * The date upon which the association started
@@ -147,5 +147,5 @@ public class ResearchGroupAssociation {
      * The type of the association
      */
     @Basic
-    ResearchGroupAssociationType type;
+    com.codinginfinity.research.people.ResearchGroupAssociationType type;
 }

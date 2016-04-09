@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codinginfinity.research.people;
+package com.codinginfinity.research.people.defaultImpl;
 
+import com.codinginfinity.research.people.*;
+
+import javax.persistence.*;
+import javax.persistence.Entity;
+import java.math.BigInteger;
 import java.util.Date;
 
 /**
@@ -14,22 +19,23 @@ import java.util.Date;
 
 /**
  * This defines an association between a Reseacher (a type of person) and a
- * ResearcherCategory
+ * ResearcherCategoryImplementation
  */
-public class ResearcherCategoryAssociation {
+@javax.persistence.Entity
+public class ResearcherCategoryAssociationImplementation implements com.codinginfinity.research.people.ResearcherCategoryAssociation {
     /**
     *  Defines the no-args constructor for a ResearchCategoryAssociation
     *  Protected, as it should not be used
     *  (especially not outside of the people package)
     */
-    protected ResearcherCategoryAssociation() {}
+    protected ResearcherCategoryAssociationImplementation() {}
     
     /**
      * Defines the standard constructor for a ResearchCategoryAssociation, which
-     * assumes date to be NOW and is provided a ResearcherCategory
+     * assumes date to be NOW and is provided a ResearcherCategoryImplementation
      * @param category The researcher category belonging to this association
      */
-    public ResearcherCategoryAssociation(ResearcherCategory category)
+    public ResearcherCategoryAssociationImplementation(com.codinginfinity.research.people.ResearcherCategory category)
     {
         this.effectiveDate = (new Date());
         this.category = category;
@@ -38,21 +44,25 @@ public class ResearcherCategoryAssociation {
     
     /**
      * Defines a second constructor for a ResearchCategoryAssociation, which
-     * is given a date and a ResearcherCategory
-     * @param   category    The researcher category belonging to this association
+     * is given a date and a ResearcherCategoryImplementation
+     * @param   categoryID    The researcher category belonging to this association
      * @param   effectiveDate The effective date of this association
-     * @throws DateInvalidException Throws if a date in the future is given for a past event
+     * @throws com.codinginfinity.research.people.DateInvalidException Throws if a date in the future is given for a past event
      */
-    public ResearcherCategoryAssociation(ResearcherCategory category, Date effectiveDate)
-            throws DateInvalidException
+    public ResearcherCategoryAssociationImplementation(com.codinginfinity.research.people.ResearcherCategory categoryID, Date effectiveDate)
+            throws com.codinginfinity.research.people.DateInvalidException
     {
-        this.category = category;
+        this.category = categoryID;
         
         if(effectiveDate.after(new Date()))
-            throw new DateInvalidException("The date "+effectiveDate+" must be in the past"
+            throw new com.codinginfinity.research.people.DateInvalidException("The date "+effectiveDate+" must be in the past"
             +" in order for it to be a valid date for a category association to become effective");
         this.effectiveDate = effectiveDate;
 
+    }
+
+    public BigInteger getId() {
+        return this.id;
     }
 
     /**
@@ -65,18 +75,22 @@ public class ResearcherCategoryAssociation {
      * Returns the research category for this association
      * @return The research category belonging to this association
      */
-    public ResearcherCategory getCategory() { return this.category; }
+    public com.codinginfinity.research.people.ResearcherCategory getCategory() { return this.category; }
     /*
     * Member variables
     */
-    
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private BigInteger id;
     /**
      * The effective date of this saved state
      */
+    @Basic
     private Date effectiveDate;
     
     /**
      * The Researcher category belonging to this state
      */
-    private ResearcherCategory category;
+    @OneToOne
+    private com.codinginfinity.research.people.ResearcherCategory category;
 }
