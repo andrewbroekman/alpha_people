@@ -5,11 +5,13 @@ import java.util.Date;
 
 public interface Person extends Entity
 {
-    void addGroup(Group group, ResearchGroupAssociationType type);
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type);
     
-    void addGroup(Group group, ResearchGroupAssociationType type, Date startDate) throws DateInvalidException;
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate) throws DateInvalidException;
     
-    void addGroup(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate) throws DateInvalidException;
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate) throws DateInvalidException;
+    
+    void endGroupAssociation(Group group);
     
     void addCategory(ResearcherCategory category);
     

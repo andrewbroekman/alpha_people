@@ -22,5 +22,9 @@ public interface Group extends Entity
     
     void addMember(Entity newMember);
     
+    void addMemberPerson(Entity newMember, ResearchGroupAssociationType associationType);
+    
     void removeMember(Entity member);
+    
+    void memberQuits(Entity member);
 }
