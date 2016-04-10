@@ -11,11 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author Renton Mcintyre (u14312710)
- */
-
-/**
  * Defines the ResearcherCategoryImplementation object
  */
 @javax.persistence.Entity
@@ -42,6 +37,11 @@ public class ResearcherCategoryImplementation implements com.codinginfinity.rese
     public void addState(com.codinginfinity.research.people.ResearchCategoryState stateID)
     {
         this.states.add(stateID);
+    }
+    
+    public void removeState(com.codinginfinity.research.people.ResearchCategoryState stateID)
+    {
+        this.states.remove(stateID);
     }
     /**
      * Returns the list of states for this ResearcherCategoryImplementation

@@ -5,16 +5,12 @@
  */
 package com.codinginfinity.research.people.defaultImpl;
 
+import com.codinginfinity.research.people.ResearchGroupAssociationType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- *
- * @author Renton Mcintyre (u14312710)
- */
 
 /**
  * 
@@ -38,6 +34,7 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     {
         this.members = new ArrayList<com.codinginfinity.research.people.Entity>();
         this.name = name;
+        isActive = true;
     }
     
     /**
@@ -50,6 +47,7 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     {
         this.name = name;
         this.members = members;
+        isActive = true;
     }
 
 
@@ -70,24 +68,71 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     */
     public List<com.codinginfinity.research.people.Entity> getMembers()
     { 
-        System.out.println(members.size());
         return this.members;
     }
     
     /**
+     * Adds an Entity to the group's members list. This can be used for Group entities
      * 
-    */
+     * @param newMember
+     * @param associationType 
+     */
     public void addMember(com.codinginfinity.research.people.Entity newMember)
-    { 
+    {
         this.members.add(newMember);
-        //kry dan member in db en add association
-        //addGroup?
+    }
+    
+    /**
+     * Adds an Entity to the group's members list. This Entity is 
+     * converted to a Person, to ensure that the person object adds
+     * the new relationship to its own list
+     * 
+     * @param newMember
+     * @param associationType 
+     */
+    public void addMemberPerson(com.codinginfinity.research.people.Entity newMember, 
+            ResearchGroupAssociationType associationType) 
+    {
+        com.codinginfinity.research.people.defaultImpl.PersonImplementation tempPerson = (com.codinginfinity.research.people.defaultImpl.PersonImplementation) newMember;
+        tempPerson.addGroupAssociation(this, associationType);
+        
+        this.members.add(newMember);
     }
 
     public void removeMember(com.codinginfinity.research.people.Entity member)
     { 
+        System.out.println(member.getClass());
+        
+        if(member.getClass().toString().equals("class com.codinginfinity.research.people.defaultImpl.PersonImplementation"))
+        {
+            com.codinginfinity.research.people.defaultImpl.PersonImplementation tempEntity = (com.codinginfinity.research.people.defaultImpl.PersonImplementation) member;
+            tempEntity.removedFromGroup(this);
+        }
         this.members.remove(member);
-        //kry dan member in db en add association
+    }
+    
+    /*
+        Called when a member leaves the group. This is called from the 
+        Person class,
+    */
+    public void memberQuits(com.codinginfinity.research.people.Entity member)
+    { 
+        this.members.remove(member);
+    }
+    
+    public void activateGroup()
+    {
+        isActive = true;
+    }
+    
+    public void suspendGroup()
+    {
+        isActive = false;
+    }
+    
+    public Boolean getGroupState()
+    {
+        return isActive;
     }
 
     /*
@@ -101,11 +146,19 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
      */
     @Basic
     private String name;
+    
+    /**
+    * The name of the Research GroupImplementation
+    */
+    @Basic
+    private Boolean isActive;
   
     /**
     * The list of members that belong to this group, of type Entity
     */
     @OneToMany
     private List<com.codinginfinity.research.people.Entity> members;
+
+    
     
 }

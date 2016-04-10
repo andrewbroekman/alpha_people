@@ -10,11 +10,6 @@ import java.math.BigInteger;
 import java.util.Date;
 
 /**
- *
- * @author Renton Mcintyre (u14312710)
- */
-
-/**
  * This class represents an association between a PersonImplementation has with a GroupImplementation object
  * and defines its type
  */
@@ -112,6 +107,16 @@ public class ResearchGroupAssociationImplementation implements com.codinginfinit
      */
     public Date getEndDate() { return this.endDate; }
 
+    
+    public void setStartDate(Date date)
+    {
+        this.startDate = date;
+    }
+    
+    public void setEndDate(Date date)
+    {
+        this.endDate = date;
+    }
     /**
      * Returns the type of this association
      * @return The type of association this is

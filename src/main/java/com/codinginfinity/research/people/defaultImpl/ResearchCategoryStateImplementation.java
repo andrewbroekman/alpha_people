@@ -9,10 +9,6 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
 
-/**
- *
- * @author Renton Mcintyre (u14312710)
- */
 
 /**
  * A saved state of a ResearcherCategoryImplementation

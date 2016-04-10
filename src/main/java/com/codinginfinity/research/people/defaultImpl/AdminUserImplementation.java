@@ -43,17 +43,17 @@ public class AdminUserImplementation implements com.codinginfinity.research.peop
     
     public void activateResearchGroup(GroupImplementation g)
     {
-        
+        g.activateGroup();
     }
     
     public void suspendResearchGroup(GroupImplementation g)
     {
-        
+        g.suspendGroup();
     }
     
     public void reactivateResearchGroup(GroupImplementation g)
     {
-        
+        g.activateGroup();
     }
 
     @Id

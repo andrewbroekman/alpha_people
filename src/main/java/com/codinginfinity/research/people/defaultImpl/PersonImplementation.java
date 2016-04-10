@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.codinginfinity.research.people.defaultImpl;
 
 import javax.persistence.*;
@@ -10,12 +5,6 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-/**
- *
- * @author Renton Mcintyre (u14312710)
- */
-
 
 /**
  * PersonImplementation type, an entity defined as being a record of a human being
@@ -39,7 +28,6 @@ public class PersonImplementation implements com.codinginfinity.research.people.
     */
     public PersonImplementation(String firstName, String surname, String primaryEmail) throws com.codinginfinity.research.people.InvalidEmailException
     {
-        
         this.categoryAssociations = new ArrayList<ResearcherCategoryAssociationImplementation>();
         this.groupAssociations = new ArrayList<com.codinginfinity.research.people.ResearchGroupAssociation>();
         this.auxiliaryEmails = new ArrayList<String>();
@@ -84,21 +72,37 @@ public class PersonImplementation implements com.codinginfinity.research.people.
         
     }
     
-    public void addGroup(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type)
+    public void addGroupAssociation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type)
     {
         groupAssociations.add(new ResearchGroupAssociationImplementation(group, type));
     }
     
-    public void addGroup(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate)
+    public void addGroupAssociation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate)
             throws com.codinginfinity.research.people.DateInvalidException
     {
         groupAssociations.add(new ResearchGroupAssociationImplementation(group, type, startDate));
     }
     
-    public void addGroup(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate, Date endDate)
+    public void addGroupAssociation(com.codinginfinity.research.people.Group group, com.codinginfinity.research.people.ResearchGroupAssociationType type, Date startDate, Date endDate)
             throws com.codinginfinity.research.people.DateInvalidException
     {
         groupAssociations.add(new ResearchGroupAssociationImplementation(group, type, startDate, endDate));
+    }
+    
+    public void endGroupAssociation(com.codinginfinity.research.people.Group group)
+    {
+        group.memberQuits(this);
+        
+        groupAssociations.remove(group);
+    }
+    
+    /**
+     * Called when the group removes person
+     * @param group 
+     */
+    public void removedFromGroup(com.codinginfinity.research.people.Group group)
+    {
+        groupAssociations.remove(group);
     }
     
     public void addCategory(ResearcherCategoryImplementation category)
@@ -110,6 +114,11 @@ public class PersonImplementation implements com.codinginfinity.research.people.
             throws com.codinginfinity.research.people.DateInvalidException
     {
         categoryAssociations.add(new ResearcherCategoryAssociationImplementation(category, effectiveDate));
+    }
+    
+    public void removeCategory(ResearcherCategoryImplementation category)
+    {
+        categoryAssociations.remove(category);
     }
     
     /**
@@ -143,9 +152,6 @@ public class PersonImplementation implements com.codinginfinity.research.people.
     */ 
     public BigInteger getUserID() { return this.userID; }
 
-    
-    //--------------------------------------------------------------------------
-    
     /**
      *
      * @param firstName
@@ -187,15 +193,16 @@ public class PersonImplementation implements com.codinginfinity.research.people.
         this.auxiliaryEmails.add(newEmail);
     };
     
+    public void removeAuxiliaryEmails(String email)
+    {
+        this.auxiliaryEmails.remove(email);
+    };
     
-    
-    //--------------------------------------------------------------------------
-    
-    
-    
-    
-    
-    
+    public void clearAuxiliaryEmails()
+    {
+        this.auxiliaryEmails.clear();
+    };
+
     
     
     
