@@ -1,3 +1,5 @@
+package com.codinginfinity.research.people;
+
 
 import com.codinginfinity.research.people.Entity;
 import com.codinginfinity.research.people.InvalidEmailException;
