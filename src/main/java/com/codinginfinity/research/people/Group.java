@@ -8,10 +8,6 @@ package com.codinginfinity.research.people;
 import java.math.BigInteger;
 import java.util.List;
 
-/**
- *
- * @author Muller
- */
 public interface Group extends Entity
 {
     BigInteger getId();
@@ -20,11 +16,11 @@ public interface Group extends Entity
     
     public List<Entity> getMembers();
     
-    void addMember(Entity newMember);
+    void addMember(Entity newMember) throws GroupSuspendedException;
     
-    void addMemberPerson(Entity newMember, ResearchGroupAssociationType associationType);
+    void addMemberPerson(Entity newMember, ResearchGroupAssociationType associationType) throws GroupSuspendedException;
     
-    void removeMember(Entity member);
+    void removeMember(Entity member) throws GroupSuspendedException;
     
-    void memberQuits(Entity member);
+    void memberQuits(Entity member) throws GroupSuspendedException;
 }

@@ -6,10 +6,6 @@
 package com.codinginfinity.research.people;
 
 
-/**
- *
- * @author Renton Mcintyre (u14312710)
- */
 
 /**
  * Defines an entity (any being with substance, such as a Person or Group)

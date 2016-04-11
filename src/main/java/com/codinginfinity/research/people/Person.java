@@ -11,7 +11,7 @@ public interface Person extends Entity
     
     void addGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate) throws DateInvalidException;
     
-    void endGroupAssociation(Group group);
+    void endGroupAssociation(Group group) throws GroupSuspendedException;
     
     void addCategory(ResearcherCategory category);
     

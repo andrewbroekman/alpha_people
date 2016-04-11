@@ -75,10 +75,11 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
      * Adds an Entity to the group's members list. This can be used for Group entities
      * 
      * @param newMember
-     * @param associationType 
+     * @throws com.codinginfinity.research.people.GroupSuspendedException
      */
-    public void addMember(com.codinginfinity.research.people.Entity newMember)
+    public void addMember(com.codinginfinity.research.people.Entity newMember) throws com.codinginfinity.research.people.GroupSuspendedException
     {
+        if(!isActive) throw new com.codinginfinity.research.people.GroupSuspendedException("The group is suspended and cannot be edited currently.");
         this.members.add(newMember);
     }
     
@@ -91,16 +92,20 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
      * @param associationType 
      */
     public void addMemberPerson(com.codinginfinity.research.people.Entity newMember, 
-            ResearchGroupAssociationType associationType) 
+            ResearchGroupAssociationType associationType) throws com.codinginfinity.research.people.GroupSuspendedException
     {
+        if(!isActive) throw new com.codinginfinity.research.people.GroupSuspendedException("The group is suspended and cannot be edited currently.");
+
         com.codinginfinity.research.people.defaultImpl.PersonImplementation tempPerson = (com.codinginfinity.research.people.defaultImpl.PersonImplementation) newMember;
         tempPerson.addGroupAssociation(this, associationType);
         
         this.members.add(newMember);
     }
 
-    public void removeMember(com.codinginfinity.research.people.Entity member)
-    { 
+    public void removeMember(com.codinginfinity.research.people.Entity member) throws com.codinginfinity.research.people.GroupSuspendedException
+    {
+        if(!isActive) throw new com.codinginfinity.research.people.GroupSuspendedException("The group is suspended and cannot be edited currently.");
+
         System.out.println(member.getClass());
         
         if(member.getClass().toString().equals("class com.codinginfinity.research.people.defaultImpl.PersonImplementation"))
@@ -115,8 +120,9 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
         Called when a member leaves the group. This is called from the 
         Person class,
     */
-    public void memberQuits(com.codinginfinity.research.people.Entity member)
-    { 
+    public void memberQuits(com.codinginfinity.research.people.Entity member) throws com.codinginfinity.research.people.GroupSuspendedException
+    {
+        if(!isActive) throw new com.codinginfinity.research.people.GroupSuspendedException("The group is suspended and cannot be edited currently.");
         this.members.remove(member);
     }
     
@@ -142,13 +148,13 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     @GeneratedValue(strategy= GenerationType.AUTO)
     private BigInteger id;
     /**
-     * The name of the Research GroupImplementation
-     */
+     * The name of the Research Group
+    */
     @Basic
     private String name;
     
     /**
-    * The name of the Research GroupImplementation
+    * The current status of the Research Group (active/inactive)
     */
     @Basic
     private Boolean isActive;
