@@ -9,7 +9,6 @@ package com.codinginfinity.research.people;
 /**
  * Defines an InvalidEmailException used to identify a case when an invalid
  * email has been given
- * @author Renton Mcintyre (u14312710)
  */
 
 public class InvalidEmailException extends Exception {

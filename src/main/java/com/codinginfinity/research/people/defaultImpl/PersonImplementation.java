@@ -10,7 +10,7 @@ import java.util.List;
  * PersonImplementation type, an entity defined as being a record of a human being
  */
 @javax.persistence.Entity
-public class PersonImplementation implements com.codinginfinity.research.people.Entity {
+public class PersonImplementation implements com.codinginfinity.research.people.Person {
     /**
     *  Defines the no-args constructor for a PersonImplementation
     *  Protected, as it should not be used
@@ -89,7 +89,7 @@ public class PersonImplementation implements com.codinginfinity.research.people.
         groupAssociations.add(new ResearchGroupAssociationImplementation(group, type, startDate, endDate));
     }
     
-    public void endGroupAssociation(com.codinginfinity.research.people.Group group)
+    public void endGroupAssociation(com.codinginfinity.research.people.Group group) throws com.codinginfinity.research.people.GroupSuspendedException
     {
         group.memberQuits(this);
         
@@ -105,12 +105,12 @@ public class PersonImplementation implements com.codinginfinity.research.people.
         groupAssociations.remove(group);
     }
     
-    public void addCategory(ResearcherCategoryImplementation category)
+    public void addCategory(com.codinginfinity.research.people.ResearcherCategory category)
     {
         categoryAssociations.add(new ResearcherCategoryAssociationImplementation(category));
     }
     
-    public void addCategory(ResearcherCategoryImplementation category, Date effectiveDate)
+    public void addCategory(com.codinginfinity.research.people.ResearcherCategory category, Date effectiveDate)
             throws com.codinginfinity.research.people.DateInvalidException
     {
         categoryAssociations.add(new ResearcherCategoryAssociationImplementation(category, effectiveDate));

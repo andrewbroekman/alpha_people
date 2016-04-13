@@ -10,7 +10,6 @@ import java.math.BigInteger;
 
 /**
  * An admin user type, with higher responsibility levels
- * @author Renton Mcintyre (u14312710)
  */
 @javax.persistence.Entity
 

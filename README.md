@@ -7,3 +7,9 @@ The following issues have been raised:
 * There is duplicate code within **main/**
 * Once the directory structure has been sorted out and the duplicate code removed we can assign implementation of interfaces
 to each team member.
+
+*Create a "Team Suspended error"
+*Change group to throw this error if a function is called while group is suspended
+*If a list is passed to Group constructor, another list must contain all Person(S) relationships
+*Complete User and Entity classes + interfaces
+*In the java docs, say what use-cases are fulfilled

@@ -10,7 +10,6 @@ import java.math.BigInteger;
 
 /**
  * A Basic user type with normal levels of access
- * @author Renton Mcintyre (u14312710)
  */
 @javax.persistence.Entity
 public class BasicUserImplementation implements com.codinginfinity.research.people.User
