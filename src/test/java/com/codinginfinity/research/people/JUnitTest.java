@@ -30,6 +30,7 @@ public class JUnitTest {
     @Before
     public void initialization() {
         
+        
         PersonImplementation examplePerson;
         
         try {
