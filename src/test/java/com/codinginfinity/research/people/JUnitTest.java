@@ -8,6 +8,8 @@ package com.codinginfinity.research.people;
 import com.codinginfinity.research.people.defaultImpl.GroupImplementation;
 import com.codinginfinity.research.people.defaultImpl.PersonImplementation;
 import com.codinginfinity.research.people.defaultImpl.ResearcherCategoryImplementation;
+import com.codinginfinity.research.people.InvalidEmailException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -27,32 +29,26 @@ public class JUnitTest {
     public JUnitTest() {
     }
     
+    
     @Before
-    public void initialization() {
+    public void initialization() throws InvalidEmailException, com.codinginfinity.research.people.InvalidEmailException {
         
-        
-        PersonImplementation examplePerson;
-        
-        try {
-            examplePersonA = new PersonImplementation("A", "A", "test@test.com");
-            examplePersonB = new PersonImplementation("B", "B", "test@test.com");
-            examplePersonC = new PersonImplementation("C", "C", "test@test.com");
-
-        }
-        
-        catch(InvalidEmailException e) {
-            System.out.println(e.getMessage());
-        }
+        examplePersonA = new PersonImplementation("A", "A", "test@test.com");
+        examplePersonB = new PersonImplementation("B", "B", "test@test.com");
+        examplePersonC = new PersonImplementation("C", "C", "test@test.com");
     }
     
     
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test(expected = InvalidEmailException.class)
+    public void test_constructor() throws InvalidEmailException, com.codinginfinity.research.people.InvalidEmailException {
+        
+        new PersonImplementation("D", "D", "test@test");
+    
+    }
+    
+   
 }
