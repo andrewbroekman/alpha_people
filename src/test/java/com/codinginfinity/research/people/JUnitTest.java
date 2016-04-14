@@ -79,14 +79,13 @@ public class JUnitTest {
    }
    
   
-   //@Test(expected = GroupSuspendedException.class)
-  // public void test_isMember() throws GroupSuspendedException , com.codinginfinity.research.people.GroupSuspendedException{
+   @Test(expected = GroupSuspendedException.class)
+  public void test_isMember() throws GroupSuspendedException , com.codinginfinity.research.people.GroupSuspendedException{
        
-      // Entity rayban;
-      // t.addMember(rayban); 
-      // t.suspendGroup();
-      // t.addMember(rayban);
- //  }
+       t.addMember(examplePersonA); 
+       t.suspendGroup();
+       t.addMember(examplePersonB);
+  }
    
  
    
