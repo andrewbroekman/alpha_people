@@ -59,6 +59,6 @@ public class ResearcherCategoryImplementation implements com.codinginfinity.rese
     /**
      * The list of saved states of this ResearcherCategoryImplementation
      */
-    @OneToMany
+    @OneToMany(targetEntity = ResearchCategoryStateImplementation.class)
     private List<com.codinginfinity.research.people.ResearchCategoryState> states;
  }

@@ -5,10 +5,11 @@
  */
 package com.codinginfinity.research.people.defaultImpl;
 
+import com.codinginfinity.research.people.Entity;
 import com.codinginfinity.research.people.GroupSuspendedException;
+import com.codinginfinity.research.people.Person;
 import com.codinginfinity.research.people.ResearchGroupAssociationType;
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     * associated with this group
     * @return The list of members in the Research GroupImplementation
     */
-    public List<com.codinginfinity.research.people.Entity> getMembers()
+    public List<Entity> getMembers()
     { 
         return this.members;
     }
@@ -83,7 +84,7 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
         if(!isActive) 
             throw new com.codinginfinity.research.people.GroupSuspendedException("The group is suspended and cannot be edited currently.");
         
-        this.members.add(newMember);
+        this.members.add((Person) newMember);
     }
     
     public void removeMember(com.codinginfinity.research.people.Entity member) throws com.codinginfinity.research.people.GroupSuspendedException
@@ -150,7 +151,7 @@ public class GroupImplementation implements com.codinginfinity.research.people.G
     /**
     * The list of members that belong to this group, of type Entity
     */
-    @OneToMany
+    @OneToMany(targetEntity = EntityImplementation.class)
     private List<com.codinginfinity.research.people.Entity> members;
    
     

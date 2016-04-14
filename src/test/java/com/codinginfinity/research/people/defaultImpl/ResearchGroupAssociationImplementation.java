@@ -133,19 +133,19 @@ public class ResearchGroupAssociationImplementation implements com.codinginfinit
     /**
      * The GroupImplementation in the association
      */
-    @OneToOne
+    @OneToOne(targetEntity = GroupImplementation.class)
     private com.codinginfinity.research.people.Group group;
     
     /**
      * The date upon which the association started
      */
-    @Basic
+    @Temporal(TemporalType.DATE)
     private Date startDate;
     
     /**
      * The date upon which the association ended
      */
-    @Basic
+    @Temporal(TemporalType.DATE)
     Date endDate;
     
     /**

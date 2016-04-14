@@ -77,15 +77,16 @@ public class ResearcherCategoryAssociationImplementation implements com.codingin
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private BigInteger id;
+    
     /**
      * The effective date of this saved state
      */
-    @Basic
+    @Temporal(TemporalType.DATE)
     private Date effectiveDate;
     
     /**
      * The Researcher category belonging to this state
      */
-    @OneToOne
+    @OneToOne(targetEntity = ResearcherCategoryImplementation.class)
     private com.codinginfinity.research.people.ResearcherCategory category;
 }

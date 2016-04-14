@@ -427,13 +427,13 @@ public class PersonImplementation implements com.codinginfinity.research.people.
     /**
      * A list of this person's research groups (holds ID of the association)
      */
-    @OneToMany
+    @OneToMany(targetEntity = ResearchGroupAssociationImplementation.class)
     private List<com.codinginfinity.research.people.ResearchGroupAssociation> groupAssociations;
     
     /**
      * A list of this person's research categories
      */
-    @OneToMany
+    @OneToMany(targetEntity = ResearcherCategoryAssociationImplementation.class)
     private List<ResearcherCategoryAssociationImplementation> categoryAssociations;
     
     @Basic

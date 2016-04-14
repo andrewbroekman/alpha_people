@@ -64,7 +64,7 @@ public class ResearchCategoryStateImplementation {
     /**
      * The effective date of this saved state
      */
-    @Basic
+    @Temporal(TemporalType.DATE)
     private Date effectiveDate;
     
     /**
