@@ -1,209 +1,168 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.codinginfinity.research.people;
 
-import java.util.ArrayList;
+import com.codinginfinity.research.people.defaultImpl.ResearcherCategoryImplementation;
+import java.math.BigInteger;
 import java.util.Date;
 
-/**
- *
- * @author Renton Mcintyre (u14312710)
- */
-
-
-/**
- * Person type, an entity defined as being a record of a human being
- */
-public class Person implements Entity {
-    /**
-    *  Defines the no-args constructor for a Person
-    *  Protected, as it should not be used
-    *  (especially not outside of the people package)
-    */
-    protected Person() {}
-    
-    /**
-    * Defines the interface of the standard constructor for
-    * a basic Person.
-    * @param    firstName   The name(s) of the Person
-    * @param    surname     The surname of the Person
-    * @param    primaryEmail The primary email address of the Person    
-    */
-    public Person(String firstName, String surname, EmailAddress primaryEmail)
-    {
-        
-        categories = new ArrayList<ResearcherCategoryAssociation>();
-        groups = new ArrayList<ResearchGroupAssociation>();
-        
-        this.firstName = firstName;
-        this.surname = surname;
-        this.primaryEmail = primaryEmail;
-        this.user = null;
-    }
-    
-    /**
-    * Defines the interface of a constructor for a Person
-    * who has a user object already defined
-    * @param    firstName   The name(s) of the Person
-    * @param    surname     The surname of the Person
-    * @param    primaryEmail The primary email address of the Person
-    * @param    user        The user object associated with the person
-    */
-    public Person(String firstName, String surname, EmailAddress primaryEmail, User user)
-    {
-        categories = new ArrayList<ResearcherCategoryAssociation>();
-        groups = new ArrayList<ResearchGroupAssociation>();
-        
-        this.firstName = firstName;
-        this.surname = surname;
-        this.primaryEmail = primaryEmail;
-        this.user = user;
-        
-    }
-    
-    public void addGroup(Group group, ResearchGroupAssociationType type)
-    {
-        groups.add(new ResearchGroupAssociation(group, type));
-    }
-    
-    public void addGroup(Group group, ResearchGroupAssociationType type, Date startDate)
-            throws DateInvalidException
-    {
-        groups.add(new ResearchGroupAssociation(group, type, startDate));
-    }
-    
-    public void addGroup(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate)
-            throws DateInvalidException
-    {
-        groups.add(new ResearchGroupAssociation(group, type, startDate, endDate));
-    }
-    
-    public void addCategory(ResearcherCategory category)
-    {
-        categories.add(new ResearcherCategoryAssociation(category));
-    }
-    
-    public void addCategory(ResearcherCategory category, Date effectiveDate)
-            throws DateInvalidException
-    {
-        categories.add(new ResearcherCategoryAssociation(category, effectiveDate));
-    }
-    
-    /**
-    * Defines a function that returns the firstName of the Person
-    * @return The first name(s) of the Person
-    */
-    public String getFirstName() { return this.firstName; }
-    
-    /**
-    * Defines a function that returns the surname of the Person
-    * @return The surname of the Person
-    */
-    public String getSurmame() { return this.surname; }
-    
-    /**
-    * Defines a function that returns the primary email address of the Person
-    * @return The primary email address of the Person
-    */
-    public EmailAddress getPrimaryEmail() { return this.primaryEmail; }
-    
-    /**
-    * Defines a function that returns the list of auxiliary email addresses of the Person
-    * @return The primary email address of the Person
-    */
-    public ArrayList<EmailAddress> getAuxiliaryEmails() { return this.auxiliaryEmails; }
-    
-    /**
-    * Defines a function that returns the user object
-    * associated with this Person
-    * @return The user object associated with this person
-    */ 
-    public User getUser() { return this.user; }
-
-    
-    //--------------------------------------------------------------------------
-    
-    /**
-     *
-     * @param firstName
-     */ 
-    public void setFirstName(String firstName){ this.firstName = firstName; }
-    
-    /**
-     *
-     * @param surname
-     */ 
-    public void setSurname(String surname){ this.surname = surname;}; 
-    
-    /**
-     *
-     * @param primaryEmail
-     */ 
-    public void setPrimaryEmail(EmailAddress primaryEmail){ this.primaryEmail = primaryEmail;}; 
-    
-    /**
-     *
-     * @param user
-     */ 
-    public void setFirstName(User user){ this.user = user;}; 
-    
-    /**
-     *
-     * @param auxiliaryEmails
-     */ 
-    public void setAuxiliaryEmails(ArrayList<EmailAddress> auxiliaryEmails){ this.auxiliaryEmails = new ArrayList<EmailAddress>(auxiliaryEmails);}; 
-    
-    
-    
-    //--------------------------------------------------------------------------
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    *   Member variables
-    */
-    /**
-     * The person's first name(s)
+public interface Person extends Entity
+{
+     /**
+     * Adds a new Researcher Category
+     * 
+     * Functionality Scope: Administrator-addResearcherCategory
+     * 
+     * @param researchState
+     * @throws UnauthorizedUserExeption Throws an exception if the user is not an admin
      */
-    private String firstName;
-    /**
-     * The person's surname
-     */
-    private String surname;
+    void addResearcherCategory(ResearchCategoryState researchState) throws UnauthorizedUserExeption;
     
     /**
-     * The person's primary email address 
+     * Adds a new Researcher Category State
+     * 
+     * @param researcherCategory
+     * @param state
+     * @throws UnauthorizedUserExeption Throws an exception if the user is not an admin
      */
-    private EmailAddress primaryEmail;
+    void addResearcherCategoryState(ResearcherCategory researcherCategory, ResearchCategoryState state) throws UnauthorizedUserExeption;
     
     /**
-     * A list of secondary email addresses, 
-     * to be added only after person's creation
+     * Removes the state from the Researcher Category
+     * 
+     * @param researcherCategory
+     * @param state
+     * @throws UnauthorizedUserExeption 
      */
-    private ArrayList<EmailAddress> auxiliaryEmails;
+    void removeResearcherCategoryState(ResearcherCategory researcherCategory, ResearchCategoryState state) throws UnauthorizedUserExeption;
     
     /**
-     * An object that contains this person's User
-     * If it is NULL, this person is just a normal researcher
+     * Removes the specified category
+     * 
+     * @param category 
      */
-    private User user;
+    void removeCategory(ResearcherCategoryImplementation category);
+    
+    
+    
+    
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type) throws GroupSuspendedException;
+    
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate) throws DateInvalidException, GroupSuspendedException;
+    
+    void addGroupAssociation(Group group, ResearchGroupAssociationType type, Date startDate, Date endDate) throws DateInvalidException, GroupSuspendedException;
+    
+    void endGroupAssociation(Group group) throws GroupSuspendedException;
     
     /**
-     * A list of this person's research groups
-     */
-    private ArrayList<ResearchGroupAssociation> groups;
+    * Adds a new researcher category
+    * 
+    * @param category 
+    */    
+    void addCategory(ResearcherCategory category);
     
     /**
-     * A list of this person's research categories
+     * Adds a new researcher category
+     * 
+     * @param category
+     * @param effectiveDate
+     * @throws com.codinginfinity.research.people.DateInvalidException 
      */
-    private ArrayList<ResearcherCategoryAssociation> categories;
+    void addCategory(ResearcherCategory category, Date effectiveDate) throws DateInvalidException;
+    
+    /**
+     * Admins and group leaders can add people to a specified group.
+     * Admins can add any person to any group.
+     * Group leaders can only add members to their own group.
+     * 
+     * Functionality Scope: Person-addResearchGroupAssociations
+     * 
+     * @param member
+     * @param group
+     * @param type
+     * @throws com.codinginfinity.research.people.GroupSuspendedException
+     * @throws com.codinginfinity.research.people.UnauthorizedUserExeption
+     * @throws NonMemberExeption 
+     */
+    void addMemberToGroup(Person member, Group group, ResearchGroupAssociationType type) throws GroupSuspendedException, UnauthorizedUserExeption, NonMemberExeption;
+    
+    /**
+     * Admins and group leaders can add people to a specified group.
+     * Admins can add any person to any group.
+     * Group leaders can only add members to their own group.
+     * 
+     * Functionality Scope: ResearchGroupLeader-addResearchGroupAssociations
+     * 
+     * @param member
+     * @param group
+     * @param type
+     * @param startDate
+     * @throws com.codinginfinity.research.people.DateInvalidException
+     * @throws com.codinginfinity.research.people.GroupSuspendedException
+     * @throws com.codinginfinity.research.people.UnauthorizedUserExeption
+     * @throws NonMemberExeption 
+     */
+    void addMemberToGroup(Person member, Group group, ResearchGroupAssociationType type, Date startDate) throws DateInvalidException, GroupSuspendedException, UnauthorizedUserExeption, NonMemberExeption;
+    
+    
+    /**
+     * Admins and group leaders can add people to a specified group.
+     * Admins can add any person to any group.
+     * Group leaders can only add members to their own group.
+     * 
+     * Functionality Scope: ResearchGroupLeader-addResearchGroupAssociations
+     * 
+     * @param member
+     * @param group
+     * @param type
+     * @param startDate
+     * @param endDate
+     * @throws com.codinginfinity.research.people.DateInvalidException
+     * @throws GroupSuspendedException
+     * @throws com.codinginfinity.research.people.UnauthorizedUserExeption
+     * @throws NonMemberExeption 
+     */
+    void addMemberToGroup(Person member, Group group, ResearchGroupAssociationType type, Date startDate, Date endDate) throws DateInvalidException, GroupSuspendedException, UnauthorizedUserExeption, NonMemberExeption;
+    
+    
+    /**
+     * Admins and group leaders can remove people from a specified group.
+     * Admins can add remove any person from any group.
+     * Group leaders can only remove members from their own group.
+     * 
+     * Functionality Scope: ResearchGroupLeader-endResearchGroupAssociations
+     * 
+     * @param member
+     * @param group
+     * @throws com.codinginfinity.research.people.DateInvalidException
+     * @throws com.codinginfinity.research.people.GroupSuspendedException
+     * @throws com.codinginfinity.research.people.UnauthorizedUserExeption
+     * @throws NonMemberExeption 
+     */
+    void removeMemberFromGroup(Person member, Group group) throws DateInvalidException, GroupSuspendedException, UnauthorizedUserExeption, NonMemberExeption;
+    
+    void addGroupToGroup(Group subGroup, Group superGroup, ResearchGroupAssociationType type) throws GroupSuspendedException, UnauthorizedUserExeption;
+    
+    void activateGroup(Group group) throws UnauthorizedUserExeption;
+    
+    void suspendGroup(Group group) throws UnauthorizedUserExeption;
+    
+    
+    String getFirstName();
+    
+    String getSurmame();
+    
+    String getPrimaryEmail();
+    
+    BigInteger getUserID();
+    
+    void setFirstName(String firstName);
+    
+    void setSurname(String surname);
+    
+    void setPrimaryEmail(String primaryEmail) throws InvalidEmailException;
+    
+    void setUser(BigInteger userID);
+     
+    void addAuxiliaryEmails(String newEmail);
+    
+    boolean isAdmin();
 }
