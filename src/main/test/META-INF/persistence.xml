@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="JPAPersistence">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <mapping-file>META-INF/orm.xml</mapping-file>
+        
+        <class>com.codinginfinity.research.people.Person</class>
+        
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/persons"/>
+            <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="eclipselink.jdbc.user" value="postgres"/>
+            <property name="eclipselink.jdbc.password" value="postgres"/>
+         	<property name="eclipselink.logging.level" value="ALL"/>
+         	<property name="eclipselink.ddl-generation" value="create-tables"/>
+        </properties>
+    </persistence-unit>
+</persistence>
