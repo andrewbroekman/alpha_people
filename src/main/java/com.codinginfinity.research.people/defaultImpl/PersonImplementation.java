@@ -31,7 +31,7 @@ public class PersonImplementation implements com.codinginfinity.research.people.
     * @param    primaryEmail The primary email address of the PersonImplementation
     * @throws   com.codinginfinity.research.people.InvalidEmailException Throws when given an invalid email format
     */
-    public PersonImplementation(String firstName, String surname, String primaryEmail) throws com.codinginfinity.research.people.InvalidEmailException
+    public PersonImplementation(String firstName, String surname, String primaryEmail, boolean isAdmin) throws com.codinginfinity.research.people.InvalidEmailException
     {
         this.categoryAssociations = new ArrayList<ResearcherCategoryAssociationImplementation>();
         this.groupAssociations = new ArrayList<com.codinginfinity.research.people.ResearchGroupAssociation>();
@@ -47,6 +47,8 @@ public class PersonImplementation implements com.codinginfinity.research.people.
 
         this.primaryEmail = primaryEmail;
         this.userID = null;
+        
+        this.isAdmin = isAdmin;
     }
     
     /**
@@ -58,7 +60,7 @@ public class PersonImplementation implements com.codinginfinity.research.people.
     * @param    userID        The id of the user object associated with the person
     * @throws   com.codinginfinity.research.people.InvalidEmailException Throws if the given email does not match standard email format
     */
-    public PersonImplementation(String firstName, String surname, String primaryEmail, BigInteger userID) throws com.codinginfinity.research.people.InvalidEmailException
+    public PersonImplementation(String firstName, String surname, String primaryEmail, BigInteger userID, boolean isAdmin) throws com.codinginfinity.research.people.InvalidEmailException
     {
         this.categoryAssociations = new ArrayList<ResearcherCategoryAssociationImplementation>();
         this.groupAssociations = new ArrayList<com.codinginfinity.research.people.ResearchGroupAssociation>();
@@ -74,6 +76,7 @@ public class PersonImplementation implements com.codinginfinity.research.people.
 
         this.primaryEmail = primaryEmail;
         this.userID = userID;
+        this.isAdmin = isAdmin;
         
     }
     
