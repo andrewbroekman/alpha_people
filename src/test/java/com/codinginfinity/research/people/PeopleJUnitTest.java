@@ -12,7 +12,6 @@ import com.codinginfinity.research.people.defaultImpl.PersonImplementation;
 import com.codinginfinity.research.people.defaultImpl.ResearcherCategoryImplementation;
 import com.codinginfinity.research.people.InvalidEmailException;
 import com.codinginfinity.research.people.InvalidEmailException;
-import static com.codinginfinity.research.people.ResearchGroupAssociationType.STUDENT;
 import com.codinginfinity.research.people.defaultImpl.ResearchGroupAssociationImplementation;
 import java.util.Date;
 
@@ -27,12 +26,12 @@ import static org.junit.Assert.*;
  *
  * @author Lethabo 
  */
-public class JUnitTest {
+public class PeopleJUnitTest {
     
     static PersonImplementation examplePersonA, examplePersonB, examplePersonC;
     static GroupImplementation exampleGroup;
     static ResearcherCategoryImplementation exampleCategory;
-    public JUnitTest() {
+    public PeopleJUnitTest() {
     }
     
     
@@ -80,14 +79,18 @@ public class JUnitTest {
    
   
    @Test(expected = GroupSuspendedException.class)
-  public void test_isMember() throws GroupSuspendedException , com.codinginfinity.research.people.GroupSuspendedException{
+    public void test_groupException() throws GroupSuspendedException , com.codinginfinity.research.people.GroupSuspendedException{
        
        t.addMember(examplePersonA); 
        t.suspendGroup();
        t.addMember(examplePersonB);
   }
-   
- 
+    
+    @Test
+    public void test_isMemebr(){
+        
+        assertEquals(t.isMember(examplePersonB), false);  
+    }
    
    private GroupImplementation test; 
    private Date day; 
