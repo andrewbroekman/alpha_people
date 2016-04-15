@@ -86,8 +86,6 @@
             <url>https://nexus.codinginfinity.com/repository/snapshots/</url>
         </repository>
     </repositories>
-    
-
     <dependencies>
     	<dependency>
     		<groupId>org.eclipse.persistence</groupId>
