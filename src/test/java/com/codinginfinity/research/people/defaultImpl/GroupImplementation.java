@@ -19,6 +19,7 @@ import java.util.List;
  * Research GroupImplementation type, defined as an Entity
  */
 @javax.persistence.Entity
+
 public class GroupImplementation implements com.codinginfinity.research.people.Group {
     /**
     *  Defines the no-args constructor for a Research GroupImplementation

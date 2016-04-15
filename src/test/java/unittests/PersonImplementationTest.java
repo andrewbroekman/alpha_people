@@ -1,7 +1,11 @@
 package unittests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.math.BigInteger;
+
 import javax.persistence.*;
 import com.codinginfinity.research.people.*;
 import com.codinginfinity.research.people.defaultImpl.*;
@@ -36,11 +40,16 @@ public class PersonImplementationTest
 		entityManager.persist(person2);
 		entityManager.persist(person3);
 		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
 	
 	@Test
-	public void deletingAPersonFromDBShouldFail()
+	public void getObjectsShouldSucceed()
 	{
-		
+		entityManager.getTransaction().begin();
+		Person retrievedPerson = entityManager.find(PersonImplementation.class, BigInteger.valueOf(0));
+		System.out.println(retrievedPerson);
+		entityManager.close();
 	}
+	
 }

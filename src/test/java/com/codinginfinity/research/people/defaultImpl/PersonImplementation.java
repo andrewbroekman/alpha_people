@@ -12,7 +12,8 @@ import java.util.List;
 /**
  * PersonImplementation type, an entity defined as being a record of a human being
  */
-@javax.persistence.Entity
+@Entity
+@Table
 public class PersonImplementation implements com.codinginfinity.research.people.Person 
 {
     //---------------------------CONSTRUCTORS---------------------------------------

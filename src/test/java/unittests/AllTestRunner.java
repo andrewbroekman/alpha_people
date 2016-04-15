@@ -9,7 +9,7 @@ public class AllTestRunner
 
 	public static void main(String[] args)
 	{
-		Result results = JUnitCore.runClasses(PersonImplementationTest.class, ResearchCategoryStateTest.class);
+		Result results = JUnitCore.runClasses(PersonImplementationTest.class);
 		if (results.getFailureCount() != 0)
 		{
 			System.out.println("(" + results.getFailureCount()+ ") Tests Failed:\n ===========================");

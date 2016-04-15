@@ -20,6 +20,12 @@
 			<basic name="auxiliaryEmails">
 				<column name="AUXILIARY_EMAIL" length="100"/>
 			</basic>
+			<basic name="isAdmin">
+				<column name="ADMIN" />
+			</basic>
+			<basic name="userID">
+				<column name="USER_ID" />
+			</basic>
 		</attributes>
 	</entity>
 </entity-mappings>

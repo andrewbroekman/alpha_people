@@ -11,6 +11,7 @@
         <class>com.codinginfinity.research.people.defaultImpl.ResearchGroupAssociationImplementation</class>
         <class>com.codinginfinity.research.people.defaultImpl.ResearchCategoryStateImplementation</class>
         <class>com.codinginfinity.research.people.defaultImpl.ResearcherCategoryImplementation</class>
+        <class>com.codinginfinity.research.people.defaultImpl.EntityImplementation</class>
         
 		  <properties>
 			  <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
