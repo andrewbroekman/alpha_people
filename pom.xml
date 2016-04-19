@@ -86,5 +86,18 @@
             <url>https://nexus.codinginfinity.com/repository/snapshots/</url>
         </repository>
     </repositories>
-
+    <dependencies>
+    	<dependency>
+    		<groupId>org.eclipse.persistence</groupId>
+    		<artifactId>eclipselink</artifactId>
+    		<version>2.6.3-M1</version>
+    		<scope>test</scope>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.apache.derby</groupId>
+    		<artifactId>derby</artifactId>
+    		<version>10.12.1.1</version>
+    		<scope>test</scope>
+    	</dependency>
+    </dependencies>
 </project>

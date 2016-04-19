@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+	<description> XML Mapping file Database</description>
+	
+	<entity class="com.codinginfinity.research.people.defaultImpl.PersonImplementation">
+		<table name="PERSONS"/>
+		<attributes>
+			<id name="id">
+				<generated-value strategy="TABLE"/>
+			</id>
+			<basic name="firstName">
+				<column name="FIRSTNAME" length="100"/>
+			</basic>
+			<basic name="surname">
+				<column name="SURNAME" length="100"/>
+			</basic>
+			<basic name="primaryEmail">
+				<column name="PRIMARY_EMAIL" length="100"/>
+			</basic>
+			<basic name="auxiliaryEmails">
+				<column name="AUXILIARY_EMAIL" length="100"/>
+			</basic>
+			<basic name="isAdmin">
+				<column name="ADMIN" />
+			</basic>
+			<basic name="userID">
+				<column name="USER_ID" />
+			</basic>
+		</attributes>
+	</entity>
+</entity-mappings>
